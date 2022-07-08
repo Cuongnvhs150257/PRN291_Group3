@@ -15,8 +15,15 @@ namespace PRNAssG8.Controllers
         [HttpPost]
         public IActionResult Insert(Product product)
         {
+            ViewBag.cate = db.Categories.ToList();
             db.Products.Add(product);
             db.SaveChanges(true);
+            return View();
+        }
+        public IActionResult Detail()
+        {
+            ViewBag.product = db.Products.ToList();
+            ViewBag.cate = db.Categories.ToList();
             return View();
         }
     }

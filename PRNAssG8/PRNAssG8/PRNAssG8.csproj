@@ -27,6 +27,16 @@
     <None Update="Views\css\bootstrap.css">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="Views\img\M-i-Ch-nh-H-ng-Lenovo-LP40-TWS-Tai-Nghe-Kh-ng-D-y-Bluetooth.jpg_Q90.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Views\Product\img\M-i-Ch-nh-H-ng-Lenovo-LP40-TWS-Tai-Nghe-Kh-ng-D-y-Bluetooth.jpg_Q90.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Views\Product\img\" />
   </ItemGroup>
 
 </Project>

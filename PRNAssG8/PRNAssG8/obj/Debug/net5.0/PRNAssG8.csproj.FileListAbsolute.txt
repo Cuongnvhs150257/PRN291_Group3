@@ -156,3 +156,6 @@ D:\IT\PRN211\PRN291_Group3\PRNAssG8\PRNAssG8\obj\Debug\net5.0\PRNAssG8.pdb
 D:\IT\PRN211\PRN291_Group3\PRNAssG8\PRNAssG8\obj\Debug\net5.0\PRNAssG8.genruntimeconfig.cache
 D:\IT\PRN211\PRN291_Group3\PRNAssG8\PRNAssG8\obj\Debug\net5.0\ref\PRNAssG8.dll
 D:\IT\PRN211\PRN291_Group3\PRNAssG8\PRNAssG8\obj\Debug\net5.0\Razor\Views\Product\Insert.cshtml.g.cs
+D:\IT\PRN211\PRN291_Group3\PRNAssG8\PRNAssG8\obj\Debug\net5.0\Razor\Views\Product\Detail.cshtml.g.cs
+D:\IT\PRN211\PRN291_Group3\PRNAssG8\PRNAssG8\bin\Debug\net5.0\Views\Product\img\M-i-Ch-nh-H-ng-Lenovo-LP40-TWS-Tai-Nghe-Kh-ng-D-y-Bluetooth.jpg_Q90.jpg
+D:\IT\PRN211\PRN291_Group3\PRNAssG8\PRNAssG8\bin\Debug\net5.0\Views\img\M-i-Ch-nh-H-ng-Lenovo-LP40-TWS-Tai-Nghe-Kh-ng-D-y-Bluetooth.jpg_Q90.jpg

@@ -33,7 +33,7 @@ namespace PRNAssG8
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Product}/{action=Insert}/{id?}"
+                    pattern: "{controller=Product}/{action=Detail}/{id?}"
                     );
             });
         }
