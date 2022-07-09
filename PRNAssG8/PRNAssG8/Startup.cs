@@ -27,13 +27,15 @@ namespace PRNAssG8
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseStaticFiles();
+
             app.UseRouting();
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Product}/{action=Detail}/{id?}"
+                    pattern: "{controller=HomePage}/{action=Index}/{id?}"
                     );
             });
         }
