@@ -5,12 +5,20 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+@*
+    Home Page
+*@
+
 <style>
   
   .Flex{
       width:90%;
       height:300px;
       display:flex;
+  }
+  .img-fluid w-100{
+      width:200px;
+      height:atuo;
   }
 
 </style>
@@ -31,21 +39,18 @@
           <div class="single-product">
             
               <div class="product-img">
-              <img class="img-fluid w-100" src="@p.Image" alt="" />
+              <img class="img-fluid w-100" src="~/img/product/@p.Image" alt="" />
               <div class="p_icon">
                 <a asp-controller="Product" asp-action="Detail" asp-route-id=@p.ProductId>
                   <i class="ti-eye"></i>
                 </a>
-                <a asp-controller="Product" asp-action="Insert">
-                  <i class="ti-heart"></i>
-                </a>
-                <a href="#">
+                <a asp-controller="Auction" asp-action="ShowAuction" asp-route-id=@p.ProductId>
                   <i class="ti-shopping-cart"></i>
                 </a>
               </div>
             </div>
             <div class="product-btm">
-              <a href="#" class="d-block">
+              <a  asp-controller="Product" asp-action="Detail" asp-route-id=@p.ProductId class="d-block">
                 <h4>@p.ProductName</h4>
               </a>
               <div class="mt-3">

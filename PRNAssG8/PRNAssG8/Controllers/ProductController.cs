@@ -20,9 +20,9 @@ namespace PRNAssG8.Controllers
             db.SaveChanges(true);
             return View();
         }
-        public IActionResult Detail()
+        public IActionResult Detail(int id)
         {
-            ViewBag.product = db.Products.ToList();
+            ViewBag.product = db.Products.Find(id);
             ViewBag.cate = db.Categories.ToList();
             return View();
         }
