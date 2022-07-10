@@ -141,3 +141,6 @@ C:\Users\s\Documents\GitHub\PRN291_Group3\PRNAssG8\PRNAssG8\bin\Debug\net5.0\www
 C:\Users\s\Documents\GitHub\PRN291_Group3\PRNAssG8\PRNAssG8\obj\Debug\net5.0\Razor\Views\Admin\Index.cshtml.g.cs
 C:\Users\s\Documents\GitHub\PRN291_Group3\PRNAssG8\PRNAssG8\obj\Debug\net5.0\Razor\Views\Auction\Index.cshtml.g.cs
 C:\Users\s\Documents\GitHub\PRN291_Group3\PRNAssG8\PRNAssG8\obj\Debug\net5.0\Razor\Views\Admin\Update.cshtml.g.cs
+D:\IT\PRN211\PRN291_Group3\PRNAssG8\PRNAssG8\obj\Debug\net5.0\Razor\Views\Admin\Index.cshtml.g.cs
+D:\IT\PRN211\PRN291_Group3\PRNAssG8\PRNAssG8\obj\Debug\net5.0\Razor\Views\Admin\Update.cshtml.g.cs
+D:\IT\PRN211\PRN291_Group3\PRNAssG8\PRNAssG8\obj\Debug\net5.0\Razor\Views\Auction\Index.cshtml.g.cs

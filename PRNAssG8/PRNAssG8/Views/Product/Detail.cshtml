@@ -7,7 +7,8 @@
 
 @{
     DateTime Datenow = DateTime.Now;
-     DateTime date = ViewBag.product.Date;
+    DateTime date = ViewBag.product.Date;
+    DateTime dateto = date.AddDays(2);
     double minP = ViewBag.product.Price + 20;
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
@@ -28,6 +29,44 @@
     }
  
 </style>
+<script>
+    function myFunction() {
+        var dao = document.getElementById("p").value;
+        if(dao> @ViewBag.product.Price)
+            alert("successful auction!!!")
+    }
+// Set the date we're counting down to
+var countDownDate = new Date(@dateto.Year,@dateto.Month,@dateto.Day,@dateto.Hour,@dateto.Minute,@dateto.Second ).getTime();
+
+// Update the count down every 1 second
+var x = setInterval(function() {
+  // Get today's date and time
+  var now = new Date().getTime();
+    
+  // Find the distance between now and the count down date
+  var distance = countDownDate - now - (31*(1000 * 60 * 60 * 24));
+    
+  // Time calculations for days, hours, minutes and seconds
+  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    
+  // Output the result in an element with id="demo"
+  document.getElementById("time").innerHTML = days + "d " + hours + "h "
+  + minutes + "m " + seconds + "s ";
+    
+  // If the count down is over, write some text 
+  if (distance < 0) {
+    clearInterval(x);
+    document.getElementById("time").innerHTML = "EXPIRED";
+  }else if(distance >(2*(1000 * 60 * 60 * 24))){
+       clearInterval(x);
+    document.getElementById("time").innerHTML = "COME BACK LATER";
+  }
+
+}, 100);
+</script>
 </head>
 <body>
     <div class="all">
@@ -36,6 +75,7 @@
             <div >
                 <img src="~/img/product/@ViewBag.product.Image"  style="align-items:center;" width=900 height=500 >
             </div>
+
             <div>
                 <h1 style="font-family:Times New Roman, Times, serif;">@ViewBag.product.ProductName -
                 @foreach(var c in ViewBag.cate)
@@ -46,18 +86,31 @@
                     }
                 }
                 </h1><br />
+
                 <div class="input-group">
                     <span class="input-group-text">Time</span>
-                 <span  class="border" style="font-size:20px; padding: 5px;">@date.ToString("dd/MMM/yyyy - HH:mm") to @date.AddDays(2).ToString("dd/MMM/yyyy - HH:mm")</span>
-                <span class="input-group-text">$</span>   
+                 <span  class="border" style="font-size:20px; padding: 5px;">@date.ToString("dd/MMM/yyyy - HH:mm") to @date.AddDays(2).ToString("dd/MMM/yyyy - HH:mm")</span>  
+                 <span  class="input-group-text" id="time"></span>
              </div><br />
+
                 @if(@Datenow.Date >= @date.Date && @Datenow.Date <= @date.AddDays(2).Date )
                 {
-                    <form>
-                        <div class="input-group">
+                    <form asp-controller="Product" asp-action="Detail" method="post">
+
+                         <div class="input-group">
+                         <input type="text" name="ProductId" value="@ViewBag.product.ProductId" style="display:none;" /> 
+                         <input type="text" name="ProductName" value="@ViewBag.product.ProductName" style="display:none;" /> 
+                         <input type="text" name="UserId" value="1" style="display:none;" /> 
+                         <input type="text" name="Image" value="@ViewBag.product.Image" style="display:none;" /> 
+                         <input type="text" name="Date" value="@ViewBag.product.Date" style="display:none;" /> 
+                         <input type="text" name="Detail" value="@ViewBag.product.Detail" style="display:none;" /> 
+                         <input type="text" name="Status" value="@ViewBag.product.Status" style="display:none;" /> 
+                         <input type="text" name="CategoryId" value="@ViewBag.product.CategoryId" style="display:none;" /> 
+                         
+                        
                         <span class="input-group-text">Price</span>
-                        <input  type="number" value="@ViewBag.product.Price" step="20" min="@minP" name="Price">
-                         <button type="submit"><i class="bi bi-shift-fill"></i></button>    
+                        <input  type="number" id="p" value="@ViewBag.product.Price"  min="@minP" name="Price"><span class="input-group-text">$</span>  
+                         <button type="submit"  onclick="myFunction()"><i class="bi bi-shift-fill"></i></button>   
                         </div>
 
                     </form>
@@ -65,10 +118,11 @@
                 @if(@Datenow.Date < @date.Date || @Datenow.Date > @date.AddDays(2).Date){
                     <div class="input-group">
                         <span class="input-group-text">Price</span>
-                        <input type="number" value="@ViewBag.product.Price" name="Price" readonly>
+                        <input type="number" value="@ViewBag.product.Price" name="Price" readonly><span class="input-group-text">$</span>  
                         </div>
                 }
                 <br />
+
                 <p>@ViewBag.product.Detail</p>
             </div>
         
