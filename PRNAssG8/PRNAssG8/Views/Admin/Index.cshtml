@@ -22,9 +22,10 @@
               <thead>
                 <tr>
                   <th scope="col">Product</th>
-                  <th scope="col">Bidder</th>
                   <th scope="col">Price Origin</th>
                   <th scope="col">Auction Price</th>
+                  <th scope="col">Status</th>
+                  <th scope="col">Edit</th>
                 </tr>
               </thead>
               <tbody>
@@ -51,7 +52,20 @@
                     <h5>@p.Price USD</h5>
                   </td>
                   <td>
-                    <h5>$720.00</h5>
+                        @if(@p.Status == 1){
+                            <h5>Show</h5>
+                        }
+                        @if(@p.Status == 0){
+                            <h5>Hide</h5>
+                        }
+                        @if(@p.Status == -1){
+                            <h5>Auctioned</h5>
+                        }
+                    
+                  </td>
+                  <td>
+                     <a class="nav-link" asp-controller="admin" asp-action="Update" asp-route-id=@p.ProductId >Edit</a>
+                     <a class="nav-link" asp-controller="admin" asp-action="Delete" asp-route-id=@p.ProductId >Delete</a>
                   </td>
                 </tr>
                 

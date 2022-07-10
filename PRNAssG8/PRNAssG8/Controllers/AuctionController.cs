@@ -10,23 +10,20 @@ namespace PRNAssG8.Controllers
     {
         PRN1Context db = new PRN1Context();
         
-        public IActionResult Index()
+        public IActionResult Index(int id)
         {
-            return View(db.Products.ToList());
-        }
-        [HttpPost]
-        public IActionResult ShowAuction(int ProId)
-        {
+            ViewBag.Products = db.Products.ToList();
             //lay ra nhung product co proid = proid da chon
             var product = db.Products.ToList();
-            if (ProId != 0)
+            if (id != 0)
             {
                 product = (from p in db.Products
-                           where p.ProductId == ProId
+                           where p.ProductId == id
                            select p).ToList();
 
             }
             return View(product);
         }
+ 
     }
 }

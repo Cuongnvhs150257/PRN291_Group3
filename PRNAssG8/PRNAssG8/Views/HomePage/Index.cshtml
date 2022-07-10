@@ -18,7 +18,7 @@
   }
   .img-fluid w-100{
       width:200px;
-      height:atuo;
+      height:auto;
   }
 
 </style>
@@ -44,7 +44,7 @@
                 <a asp-controller="Product" asp-action="Detail" asp-route-id=@p.ProductId>
                   <i class="ti-eye"></i>
                 </a>
-                <a asp-controller="Auction" asp-action="ShowAuction" asp-route-id=@p.ProductId>
+                <a asp-controller="Auction" asp-action="Index" asp-route-id=@p.ProductId>
                   <i class="ti-shopping-cart"></i>
                 </a>
               </div>
