@@ -21,6 +21,19 @@
         box-shadow: 3px 8px #888888;
     }
 </style>
+<script>
+    function myFunction() {
+        var p = document.getElementById("pname").value;
+        var p1 = document.getElementById("img").value;
+        var p2 = document.getElementById("pri").value;
+        var p3 = document.getElementById("dat").value;
+        var p4 = document.getElementById("dtl").value;
+        if(p != null && p1 != null && p2 != null && p3 != null && p4 != null)
+            alert("Inserted!!!")
+        else if(p == null || p1 == null || p2 == null || p3 == null || p4 == null )
+            alert("Something Null!!!")
+    }
+</script>
 </head>
 <body>
     <div class="all">
@@ -28,25 +41,25 @@
    
         <form asp-controller="Product" asp-action="Insert" method="post">
             <div class="input-group">
-            <span class="input-group-text">ProductName</span><input type="text" name="ProductName" class="form-control"/>
+            <span class="input-group-text">ProductName</span><input id='pname' type="text" name="ProductName" class="form-control"/>
             </div><br/>
 
             <input type="text" name="UserId" value="1" style="display:none;" /> 
 
             <div class="input-group">
-            <input type="file" name="Image" class="form-control"/><span class="input-group-text">Image</span>   
+            <input id='img' type="file" name="Image" class="form-control"/><span class="input-group-text">Image</span>   
             </div><br/>
 
             <div class="input-group">
-            <span class="input-group-text">Price</span><input type="text" name="Price" class="form-control"/><span class="input-group-text">$</span>   
+            <span class="input-group-text">Price</span><input id='pri' type="number" min="0" name="Price" class="form-control"/><span class="input-group-text">$</span>   
             </div><br/>
 
             <div class="input-group">
-            <span class="input-group-text">Date</span><input type="date" name="Date" class="form-control"/>
+            <span class="input-group-text">Date</span><input id='dat' type="date" name="Date" class="form-control"/>
             </div><br/>
 
             <div class="input-group">
-            <span class="input-group-text">Detail</span><textarea name="Detail" class="form-control"></textarea>
+            <span class="input-group-text">Detail</span><textarea id='dtl' name="Detail" class="form-control"></textarea>
             </div><br/>
 
             <div class="input-group">
@@ -61,11 +74,11 @@
             <div class="input-group">
             <span class="input-group-text">Detail</span><select name="Status" class="form-select">
                 <option value="1">activate</option>
-                <option value="0">non  activate</option>
+                <option value="0">non activate</option>
             </select>
             </div><br/>
 
-             <button type="submit"  class="btn btn-primary">Add</button>
+             <button type="submit" onclick="myFunction()" class="btn btn-primary">Add</button>
 
         </form>
     </div>

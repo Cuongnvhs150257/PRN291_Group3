@@ -15,6 +15,8 @@ namespace PRNAssG8.Controllers
         [HttpPost]
         public IActionResult Insert(Product product)
         {
+            if(product == null)
+                return RedirectToAction("Insert");
             ViewBag.cate = db.Categories.ToList();
             db.Products.Add(product);
             db.SaveChanges(true);
@@ -25,6 +27,13 @@ namespace PRNAssG8.Controllers
             ViewBag.product = db.Products.Find(id);
             ViewBag.cate = db.Categories.ToList();
             return View();
+        }
+        [HttpPost]
+        public IActionResult Detail( Product product)
+        {
+            db.Products.Update(product);
+            db.SaveChanges(true);
+            return RedirectToAction("Detail");
         }
     }
 }
