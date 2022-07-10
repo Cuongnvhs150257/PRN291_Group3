@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@addTagHelper *,Microsoft.AspNetCore.Mvc.TagHelpers
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -46,7 +47,7 @@
               <div class="col-lg-7 pr-0">
                 <ul class="nav navbar-nav center_nav pull-right">
                   <li class="nav-item active">
-                    <a class="nav-link" href="index.html">Home</a>
+                    <a class="nav-link" asp-controller="HomePage" asp-action="Index">Home</a>
                   </li>
                   <li class="nav-item submenu dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
@@ -67,7 +68,7 @@
                     </ul>
                   </li>
                   <li class="nav-item active">
-                    <a class="nav-link" href="#">Up Load</a>
+                    <a class="nav-link" asp-controller="Product" asp-action="Insert" >Up Load</a>
                   </li>
                  </ul> 
                  
