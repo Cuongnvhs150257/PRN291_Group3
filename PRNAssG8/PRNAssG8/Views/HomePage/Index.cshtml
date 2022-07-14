@@ -31,15 +31,17 @@
           </div>
         </div>
       </div>
-        <div class=Flex>
+      </div>
+      <div class="container">
+      <div class="row justify-content-center">
         @foreach (var p in Model)
         {
-        
-        <div class="col-lg-3 col-md-6">
+
+        <div class="col-lg-3">
           <div class="single-product">
             
               <div class="product-img">
-              <img class="img-fluid w-100" src="~/img/product/@p.Image" alt="" />
+              <img src="~/img/product/@p.Image" width=auto height=200 alt="" />
               <div class="p_icon">
                 <a asp-controller="Product" asp-action="Detail" asp-route-id=@p.ProductId>
                   <i class="ti-eye"></i>
@@ -62,7 +64,7 @@
             
           </div>
         </div>
-        
+
         }
         </div>
       </div> 
