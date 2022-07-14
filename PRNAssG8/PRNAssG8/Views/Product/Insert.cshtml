@@ -28,12 +28,17 @@
         var p2 = document.getElementById("pri").value;
         var p3 = document.getElementById("dat").value;
         var p4 = document.getElementById("dtl").value;
-        if(p != null && p1 != null && p2 != null && p3 != null && p4 != null)
+        if(p != "" && p1 != "" && p2 != "" && p3 != "" && p4 != "")
             alert("Inserted!!!")
-        else if(p == null || p1 == null || p2 == null || p3 == null || p4 == null )
+        else if(p == "" || p1 == "" || p2 == "" || p3 == "" || p4 == "" ){
             alert("Something Null!!!")
-        else  
-            alert("Something Null!!!") 
+            location.reload()
+        }
+            
+        else {
+            alert("Something Null!!!")
+            location.reload()
+        }
     }
 </script>
 </head>
@@ -46,7 +51,7 @@
             <span class="input-group-text">ProductName</span><input id='pname' type="text" name="ProductName" class="form-control"/>
             </div><br/>
 
-            <input type="text" name="UserId" value="3" style="display:none;" /> 
+            <input type="text" name="UserId" value="1" style="display:none;" /> 
 
             <div class="input-group">
             <input id='img' type="file" name="Image" class="form-control"/><span class="input-group-text">Image</span>   

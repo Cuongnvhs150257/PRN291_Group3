@@ -10,7 +10,7 @@ namespace PRNAssG8.Controllers
 
         public IActionResult Manager()
         {
-            int id = 3;
+            int id = 1;
             //lay ra nhung product co cateid = cateid da chon
             var product = db.Products.ToList();
             if (id != 0)
@@ -24,7 +24,6 @@ namespace PRNAssG8.Controllers
             
         }
 
-        [HttpPost]
         public IActionResult Delete(int id)
         {
             var product = db.Products.Find(id);

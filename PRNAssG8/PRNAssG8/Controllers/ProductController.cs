@@ -15,7 +15,7 @@ namespace PRNAssG8.Controllers
         [HttpPost]
         public IActionResult Insert(Product product)
         {
-            if(product.ProductName==null||product.Image == null || product.Price.ToString().Equals("") || product.Date.ToString().Equals("") || product.Detail == null)
+            if(product.ProductName==null||product.Image == null || product.Price.ToString() =="" || product.Date.ToString() == "" || product.Detail == null)
                 return RedirectToAction("Insert");
             ViewBag.cate = db.Categories.ToList();
             db.Products.Add(product);
