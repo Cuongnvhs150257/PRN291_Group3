@@ -15,7 +15,7 @@ namespace PRNAssG8.Controllers
         [HttpPost]
         public IActionResult Insert(Product product)
         {
-            if(product == null)
+            if(product.ProductName==null||product.Image == null || product.Price.ToString().Equals("") || product.Date.ToString().Equals("") || product.Detail == null)
                 return RedirectToAction("Insert");
             ViewBag.cate = db.Categories.ToList();
             db.Products.Add(product);
@@ -24,8 +24,8 @@ namespace PRNAssG8.Controllers
         }
         public IActionResult Detail(int id)
         {
-            ViewBag.product = db.Products.Find(id);
             ViewBag.cate = db.Categories.ToList();
+            ViewBag.product = db.Products.Find(id);
             return View();
         }
         [HttpPost]

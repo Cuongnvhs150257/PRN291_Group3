@@ -25,28 +25,30 @@
 
    
         <form asp-controller="Admin" asp-action="Update" method="post">
+            <input type="text" name="ProductId" class="form-control" style="display:none;" value="@ViewBag.Product.ProductId">
+            <input type="text" name="UserId" class="form-control" style="display:none;" value="@ViewBag.Product.UserId">
             <div class="input-group">
-            <span class="input-group-text">ProductName</span><input type="text" name="ProductName" class="form-control" asp-for=ProductName/>
+            <span class="input-group-text">ProductName</span><input type="text" name="ProductName" class="form-control" value="@ViewBag.Product.ProductName"/>
             </div><br/>
 
             <div class="input-group">
-            <input type="file" name="Image" class="form-control"/><span class="input-group-text" asp-for=Image>Image</span>   
+            <input type="file" name="Image" class="form-control"/><span class="input-group-text" value="@ViewBag.Product.Image">Image</span>   
             </div><br/>
 
             <div class="input-group">
-            <span class="input-group-text">Price</span><input type="text" name="Price" class="form-control" asp-for=Price><span class="input-group-text">$</span>   
+            <span class="input-group-text">Price</span><input type="text" name="Price" class="form-control" value="@ViewBag.Product.Price"><span class="input-group-text">$</span>   
             </div><br/>
 
             <div class="input-group">
-            <span class="input-group-text">Date</span><input type="date" name="Date" class="form-control" asp-for=Date>
+            <span class="input-group-text">Date</span><input type="date" name="Date" class="form-control" value="@ViewBag.Product.Date">
             </div><br/>
 
             <div class="input-group">
-            <span class="input-group-text">Detail</span><textarea name="Detail" class="form-control" asp-for=Detail></textarea>
+            <span class="input-group-text">Detail</span><textarea name="Detail" class="form-control" >@ViewBag.Product.Detail</textarea>
             </div><br/>
 
             <div class="input-group">
-            <span class="input-group-text">CategoryId</span><select name="CategoryId" class="form-select" asp-for=Category>
+            <span class="input-group-text">CategoryId</span><select name="CategoryId" class="form-select">
                     @foreach(var p in ViewBag.Category)
                     {
                         <option value="@p.CategoryId">@p.CategoryName</option>
@@ -55,10 +57,19 @@
             </div><br/>
 
             <div class="input-group">
-            <span class="input-group-text">Detail</span><select name="Status" class="form-select" asp-for=Status>
-                <option value="1">activate</option>
-                <option value="0">non  activate</option>
-            </select>
+            <select name="Status" class="form-select" >
+                    @if(@ViewBag.Product.Status == 1)
+                    {
+                        <option value="1">active</option>
+                        <option value="0">non active</option>
+                    }
+                    @if(@ViewBag.Product.Status == 0)
+                    {
+                        <option value="0">non active</option>
+                        <option value="1">active</option>
+ 
+                    }
+                </select>
             </div><br/>
 
              <button type="submit"  class="btn btn-primary">Add</button>
