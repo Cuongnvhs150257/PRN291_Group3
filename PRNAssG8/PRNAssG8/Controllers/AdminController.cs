@@ -34,6 +34,7 @@ namespace PRNAssG8.Controllers
         
         public IActionResult Update(int id)
         {
+
             ViewBag.Product = db.Products.Find(id);
             ViewBag.Category = db.Categories.ToList();
             return View();
@@ -42,8 +43,10 @@ namespace PRNAssG8.Controllers
         [HttpPost]
         public IActionResult Update(Product product)
         {
+            if (product.ProductName == null || product.Image == null || product.Price == 0 || product.Date.ToString() == "" || product.Detail == null)
+                return RedirectToAction("Update");
             db.Products.Update(product);
-            db.SaveChanges();
+            db.SaveChanges(true);
             return RedirectToAction("Manager");
         }
     }

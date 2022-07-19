@@ -5963,23 +5963,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\dathp\\.nuget\\packages\\": {},
+    "C:\\Users\\s\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\IT\\PRN211\\PRN291_Group3\\PRNAssG8\\PRNAssG8\\PRNAssG8.csproj",
+      "projectUniqueName": "C:\\Users\\s\\Documents\\GitHub\\PRN291_Group3\\PRNAssG8\\PRNAssG8\\PRNAssG8.csproj",
       "projectName": "PRNAssG8",
-      "projectPath": "D:\\IT\\PRN211\\PRN291_Group3\\PRNAssG8\\PRNAssG8\\PRNAssG8.csproj",
-      "packagesPath": "C:\\Users\\dathp\\.nuget\\packages\\",
-      "outputPath": "D:\\IT\\PRN211\\PRN291_Group3\\PRNAssG8\\PRNAssG8\\obj\\",
+      "projectPath": "C:\\Users\\s\\Documents\\GitHub\\PRN291_Group3\\PRNAssG8\\PRNAssG8\\PRNAssG8.csproj",
+      "packagesPath": "C:\\Users\\s\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\s\\Documents\\GitHub\\PRN291_Group3\\PRNAssG8\\PRNAssG8\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\dathp\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\s\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
