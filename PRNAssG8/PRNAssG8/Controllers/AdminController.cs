@@ -10,7 +10,7 @@ namespace PRNAssG8.Controllers
 
         public IActionResult Manager()
         {
-            int id = 1;
+            int id = 3;
             //lay ra nhung product co cateid = cateid da chon
             var product = db.Products.ToList();
             if (id != 0)

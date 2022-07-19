@@ -1,0 +1,59 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@using PRNAssG8.Models;
+@model List<Product>
+
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+  
+  .Flex{
+      width:90%;
+      height:300px;
+      display:flex;
+  }
+  .img-fluid w-100{
+      width:200px;
+      height:auto;
+  }
+</style>
+<!--================Home Banner Area =================-->
+    <section class="banner_area">
+      <div class="banner_inner d-flex align-items-center">
+        <div class="container">
+          <div
+            class="banner_content d-md-flex justify-content-between align-items-center"
+          >
+            <div class="mb-3 mb-md-0">
+              <h2>Search Product</h2>
+              
+            </div>
+            <div class="page_link">
+              <a href="index.html">Home</a>
+              <a href="tracking.html">Search</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!--================End Home Banner Area =================-->
+
+    <!--================Tracking Box Area =================-->
+    <section class="tracking_box_area section_gap">
+        <div class="container">
+            <div class="tracking_box_inner">
+                <p>Please input Product Name to Search</p>
+                
+                    <div class="col-md-12 form-group">
+                        <input type="text" class="form-control" id="productname" name="productname" placeholder="Product Name">
+                    </div>
+                   
+                    <div class="col-md-12 form-group">
+                        <button type="submit" value="submit" class="btn submit_btn">Search</button>
+                    </div>
+            </div>
+        </div>
+    </section>
+    <!--================End Tracking Box Area =================-->
