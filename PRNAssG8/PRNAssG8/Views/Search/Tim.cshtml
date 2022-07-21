@@ -46,6 +46,8 @@
             <div class="tracking_box_inner">
                 <p>Please input Product Name to Search</p>
                 
+                <form asp-controller="Search" asp-action="Tim" method="post">
+
                     <div class="col-md-12 form-group">
                         <input type="text" class="form-control" id="productname" name="productname" placeholder="Product Name">
                     </div>
@@ -53,7 +55,47 @@
                     <div class="col-md-12 form-group">
                         <button type="submit" value="submit" class="btn submit_btn">Search</button>
                     </div>
+
+                </form>
             </div>
         </div>
     </section>
     <!--================End Tracking Box Area =================-->
+
+    <div class="container">
+      <div class="row justify-content-center">
+        @foreach (var p in Model)
+        {
+
+        <div class="col-lg-3">
+          <div class="single-product">
+            
+              <div class="product-img">
+              <img src="~/img/product/@p.Image" width=auto height=200 alt="" />
+              <div class="p_icon">
+                <a asp-controller="Product" asp-action="Detail" asp-route-id=@p.ProductId>
+                  <i class="ti-eye"></i>
+                </a>
+                <a asp-controller="Auction" asp-action="Index" asp-route-id=@p.ProductId>
+                  <i class="ti-shopping-cart"></i>
+                </a>
+              </div>
+            </div>
+            <div class="product-btm">
+              <a  asp-controller="Product" asp-action="Detail" asp-route-id=@p.ProductId class="d-block">
+                <h4>@p.ProductName</h4>
+              </a>
+              <div class="mt-3">
+                <span class="mr-4">@p.Price USD</span>
+                
+              </div>
+            </div>  
+            
+            
+          </div>
+        </div>
+
+        }
+        </div>
+      </div> 
+

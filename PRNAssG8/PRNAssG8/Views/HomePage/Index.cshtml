@@ -19,9 +19,35 @@
   .img-fluid w-100{
       width:200px;
       height:auto;
+  }.section_gapd{
+      padding:0;
+      margin-left: 1100px;
+  }.form-control{
+      width: 200px;
   }
 
 </style>
+
+    <section class="tracking_box_area section_gapd">
+        <div class="container">
+            <div class="tracking_box_inner">
+                
+                
+                <form asp-controller="HomePage" asp-action="Index" method="post">
+
+                    <div class="col-md-12 form-group">
+                        <input type="text" class="form-control" id="productname" name="productname" placeholder="Product Name">
+                    </div>
+                   
+                    <div class="col-md-12 form-group">
+                        <button type="submit" value="submit" class="btn submit_btn">Search</button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </section>
+
     <div class="container">
       <div class="row justify-content-center">
         <div class="col-lg-12">

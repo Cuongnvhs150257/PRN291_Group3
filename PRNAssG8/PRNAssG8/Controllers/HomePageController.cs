@@ -21,5 +21,22 @@ namespace PRNAssG8.Controllers
                        select p).ToList();
             return View(product);
         }
+
+        [HttpPost]
+        public IActionResult Index(Product productSe)
+        {
+            string Pro = productSe.ProductName.ToString();
+            var product = db.Products.ToList();
+            if (productSe.ProductName.ToString() != null)
+            {
+
+                product = (from p in db.Products
+                             where p.ProductName == Pro
+                             select p).ToList();
+            }
+
+
+            return View(product);
+        }
     }
 }
