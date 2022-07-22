@@ -31,7 +31,7 @@ namespace PRNAssG8.Controllers
                         select p);
                 HttpContext.Session.SetString("username", u.FullName);
                 HttpContext.Session.SetInt32("userid",u.UserId);
-                return RedirectToAction("Index","HomePage");
+                return View();
             }
             
 
