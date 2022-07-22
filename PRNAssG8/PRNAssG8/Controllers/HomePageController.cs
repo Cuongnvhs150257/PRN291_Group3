@@ -16,8 +16,7 @@ namespace PRNAssG8.Controllers
         [Route("~/")]
         public IActionResult Index()
         {
-            ViewBag.Username = HttpContext.Session.GetString("username");
-            ViewBag.Userid = HttpContext.Session.GetInt32("userid");
+            
             var product = db.Products.ToList();
             product = (from p in db.Products
                        where p.Status == 1
@@ -40,5 +39,6 @@ namespace PRNAssG8.Controllers
 
             return View(productSe);
         }
+        
     }
 }

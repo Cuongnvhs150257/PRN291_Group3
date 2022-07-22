@@ -20,18 +20,20 @@ namespace PRNAssG8.Controllers
 
             if(name == null || password == null)
             {
+                
                 return View();
             }
             else
             {
                 var User = db.Users.ToList();
 
-                User u = (User) (from p in User
+                User = (from p in User
                         where p.UserName == name && p.Password == password
-                        select p);
-                HttpContext.Session.SetString("username", u.FullName);
-                HttpContext.Session.SetInt32("userid",u.UserId);
-                return RedirectToAction("Index","HomePage");
+                        select p).ToList();
+
+                HttpContext.Session.SetString("username", name);
+                //HttpContext.Session.SetInt32("userid",Id);
+                return RedirectToAction("Index", "HomePage");
             }
             
 

@@ -1,4 +1,5 @@
-﻿@addTagHelper *,Microsoft.AspNetCore.Mvc.TagHelpers
+﻿@using Microsoft.AspNetCore.Http
+@addTagHelper *,Microsoft.AspNetCore.Mvc.TagHelpers
 <!DOCTYPE html>
 <html lang="en">
 
@@ -22,6 +23,7 @@
   <!-- main css -->
   <link rel="stylesheet" href="~/css/style.css" />
   <link rel="stylesheet" href="~/css/responsive.css" />
+ 
 </head>
 
 <body>
@@ -49,13 +51,20 @@
                   <li class="nav-item active">
                     <a class="nav-link" asp-controller="HomePage" asp-action="Index">Home</a>
                   </li>
-                  
-                  <li class="nav-item active">
+                                    @{
+                                        var id = Context.Session.GetInt32("userid");
+                                        var name = Context.Session.GetString("username");
+                                    }
+                  @if (id == 2)
+                 {
+                     <li class="nav-item active">
                     <a class="nav-link" asp-controller="Product" asp-action="Insert" >Up Load</a>
                   </li>
                   <li class="nav-item active">
                     <a class="nav-link" asp-controller="Admin" asp-action="Manager">Manager</a>
                   </li>
+                 
+                 }
                  </ul> 
                  
                   
@@ -74,18 +83,38 @@
                       <i class="ti-shopping-cart"></i>
                     </a>
                   </li>
-
-                  <li class="nav-item">
+                  @if (name != null)
+                 {
+                     <li class="nav-item">
+                    <a class="icons" asp-controller="Permission" asp-action="Pre" >
+                      <i class="ti-user" aria-hidden="true"></i>
+                    </a>
+                    </li>
+                 }
+                 @if(name == null){
+                    <li class="nav-item">
                     <a class="icons" asp-controller="Login" asp-action="Lo" >
                       <i class="ti-user" aria-hidden="true"></i>
                     </a>
-                  </li>
+                    </li>
+                 }
+                  
 
                   <li class="nav-item">
                     <a class="icons">
                       <i class="ti-heart" aria-hidden="true"></i>
                     </a>
                   </li>
+                  @if (name != null)
+                 {
+                     <li class="nav-item">
+                    <a class="icons">
+                      <p>@name</p>
+                    </a>
+                  </li>
+                 }
+                  
+
                 </ul>
               </div>
             </div>
