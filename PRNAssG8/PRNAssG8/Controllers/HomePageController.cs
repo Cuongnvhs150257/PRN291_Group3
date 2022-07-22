@@ -4,15 +4,13 @@ using PRNAssG8.Models;
 
 namespace PRNAssG8.Controllers
 {
-    [Route("homepage")]
+    
 
     public class HomePageController : Controller
     {
 
         PRN2Context db = new PRN2Context();
-        [Route("index")]
-        [Route("")]
-        [Route("~/")]
+        
         public IActionResult Index()
         {
             

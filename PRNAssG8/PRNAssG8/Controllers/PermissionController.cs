@@ -7,8 +7,10 @@ namespace PRNAssG8.Controllers
     {
         public IActionResult Pre()
         {
+            HttpContext.Session.Remove("userid");
+            HttpContext.Session.Remove("username");
 
-            return View();
+            return RedirectToAction("Tim", "Search");
         }
     }
 }
