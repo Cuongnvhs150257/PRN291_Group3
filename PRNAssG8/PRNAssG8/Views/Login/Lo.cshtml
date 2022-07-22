@@ -9,6 +9,9 @@
 <style>
     .returning_customer{
         margin-left: 200px;
+    }.returning_customer p{
+        padding-left: 0px;
+        margin-bottom: 0px;
     }
 </style>
 
@@ -40,6 +43,8 @@
             
           
             <div class="col-md-6 form-group p_star">
+                
+              <p class="Loname" >Username: </p>
               <input
                 type="text"
                 class="form-control"
@@ -48,12 +53,10 @@
                 value=" "
                 require=""
               />
-              <span
-                class="placeholder"
-                data-placeholder="Username"
-              ></span>
+              
             </div>
             <div class="col-md-6 form-group p_star">
+                <p class="Loname">Password: </p>
               <input
                 type="password"
                 class="form-control"
@@ -61,13 +64,17 @@
                 value=""
                 require=""
               />
-              <span class="placeholder" data-placeholder="Password"></span>
+              
             </div>
             <div class="col-md-12 form-group">
               <button type="submit" value="submit" class="btn submit_btn">
                 Login
               </button>
              
+              <p>@ViewBag.Map</p>
+
+             
+
             </div>
           </form>
         </div>

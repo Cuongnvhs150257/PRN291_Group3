@@ -1,5 +1,6 @@
 ﻿@addTagHelper *,Microsoft.AspNetCore.Mvc.TagHelpers
 @using PRNAssG8.Models
+@using Microsoft.AspNetCore.Http
 @*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
@@ -13,6 +14,11 @@
     double minP = ViewBag.product.Price + 20;
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+@{
+    var id = Context.Session.GetInt32("userid");
+
+}
+
 
 <!DOCTYPE html>
 <html>
@@ -118,16 +124,16 @@ var x = setInterval(function() {
                          <div class="input-group">
                            @foreach(Reservation r in ViewBag.res)
                            {
-                              if(r.ReservationId==9){
+                              if(r.ReservationId== @id){
                                             <input type="text" name="check" value="1" style="display:none;" />
                                         }
-                                        if (r.ReservationId != 3)
+                                        if (r.ReservationId != @id)
                                         {
                                             <input type="text" name="check" value="0" style="display:none;" />
                                         }
                                     }
-                          <input type="text" name="ReservationId" value="9" style="display:none;" />    
-                         <input type="text" name="UserId" value="9" style="display:none;" /> 
+                          <input type="text" name="ReservationId" value="@id" style="display:none;" />    
+                         <input type="text" name="UserId" value="@id" style="display:none;" /> 
                          <input type="text" name="ProductId" value="@ViewBag.product.ProductId" style="display:none;" /> 
                          <input type="text" name="Time" value="@Datenow" style="display:none;" /> 
                         <span class="input-group-text">Price</span>

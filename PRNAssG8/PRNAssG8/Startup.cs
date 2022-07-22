@@ -38,7 +38,7 @@ namespace PRNAssG8
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Login}/{action=Lo}/{id?}"
+                    pattern: "{controller=HomePage}/{action=Index}/{id?}"
                     );
             });
         }
