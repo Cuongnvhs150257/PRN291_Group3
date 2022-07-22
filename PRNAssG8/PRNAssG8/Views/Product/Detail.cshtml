@@ -1,4 +1,5 @@
 ﻿@addTagHelper *,Microsoft.AspNetCore.Mvc.TagHelpers
+@using PRNAssG8.Models
 @*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
@@ -23,11 +24,25 @@
     .all{
         padding: 20px ;
         margin:auto;
-        width:50%;
-        border: 1px solid;
-        box-shadow: 3px 8px #888888;
+        width:80%;
+    
     }
+    .alll{
+        padding: 20px ;
  
+        border: 1px solid;
+
+    }
+    .allr{
+        padding: 20px ;
+     border: 1px solid; 
+     text-align:center;
+   
+
+    }
+    table, th, td {
+  border: 1px solid;
+}
 </style>
 <script>
     function myFunction() {
@@ -71,7 +86,9 @@ var x = setInterval(function() {
 <body>
     <div class="all">
         
-            
+       <div class="container">
+         <div class="row">
+           <div class="col-8 alll" >
             <div >
                 <img src="~/img/product/@ViewBag.product.Image" class="img-fluid" style="align-items:center;">
             </div>
@@ -99,18 +116,22 @@ var x = setInterval(function() {
                     <form asp-controller="Product" asp-action="Detail" method="post">
 
                          <div class="input-group">
+                           @foreach(Reservation r in ViewBag.res)
+                           {
+                              if(r.ReservationId==9){
+                                            <input type="text" name="check" value="1" style="display:none;" />
+                                        }
+                                        if (r.ReservationId != 3)
+                                        {
+                                            <input type="text" name="check" value="0" style="display:none;" />
+                                        }
+                                    }
+                          <input type="text" name="ReservationId" value="9" style="display:none;" />    
+                         <input type="text" name="UserId" value="9" style="display:none;" /> 
                          <input type="text" name="ProductId" value="@ViewBag.product.ProductId" style="display:none;" /> 
-                         <input type="text" name="ProductName" value="@ViewBag.product.ProductName" style="display:none;" /> 
-                         <input type="text" name="UserId" value="1" style="display:none;" /> 
-                         <input type="text" name="Image" value="@ViewBag.product.Image" style="display:none;" /> 
-                         <input type="text" name="Date" value="@ViewBag.product.Date" style="display:none;" /> 
-                         <input type="text" name="Detail" value="@ViewBag.product.Detail" style="display:none;" /> 
-                         <input type="text" name="Status" value="@ViewBag.product.Status" style="display:none;" /> 
-                         <input type="text" name="CategoryId" value="@ViewBag.product.CategoryId" style="display:none;" /> 
-                         
-                        
+                         <input type="text" name="Time" value="@Datenow" style="display:none;" /> 
                         <span class="input-group-text">Price</span>
-                        <input  type="number" id="p" value="@ViewBag.product.Price"  min="@minP" name="Price"><span class="input-group-text">$</span>  
+                        <input  type="number" id="p" value="@ViewBag.product.Price"  min="@minP" name="NewPrice"><span class="input-group-text">$</span>  
                          <button type="submit"  onclick="myFunction()"><i class="bi bi-shift-fill"></i></button>   
                         </div>
 
@@ -119,15 +140,42 @@ var x = setInterval(function() {
                 @if(@Datenow.Date < @date.Date || @Datenow.Date > @date.AddDays(2).Date){
                     <div class="input-group">
                         <span class="input-group-text">Price</span>
-                        <input type="number" value="@ViewBag.product.Price" name="Price" readonly><span class="input-group-text">$</span>  
+                        <input type="number" value="@ViewBag.product.Price" readonly><span class="input-group-text">$</span>  
                         </div>
                 }
                 <br />
 
                 <p>@ViewBag.product.Detail</p>
             </div>
-        
-       
+
+            </div>
+            <div class="col-4 allr">
+                    <table width=100% height=auto>
+                        <tr>
+                            <th colspan=3>auction activities</th>
+                        </tr>
+                        <tr>
+                            <th>Auctioneer's name</th>
+                            <th>Price</th>
+                            <th>Time</th>
+                           
+                        </tr>
+                        @foreach(Reservation r in ViewBag.re){
+                        <tr>
+                            @foreach(User u in ViewBag.user){
+                                if(@r.UserId==@u.UserId){
+                                    <td>@u.FullName</td>
+                                }
+                            }
+                            <td>@r.NewPrice</td>
+                            <td>@r.Time</td>
+                           
+                        </tr>
+                        }
+                    </table>
+                </div>
+      </div>
+     </div>
 
     </div>
 

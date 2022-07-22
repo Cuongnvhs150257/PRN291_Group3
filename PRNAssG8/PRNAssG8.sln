@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.1.32421.90
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PRNAssG8", "PRNAssG8\PRNAssG8.csproj", "{B554742D-BC89-438E-AE2D-96FC3179C18B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PRNAssG8", "PRNAssG8\PRNAssG8.csproj", "{93A6D471-325A-4623-BCA7-7F1905CB50FC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{B554742D-BC89-438E-AE2D-96FC3179C18B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B554742D-BC89-438E-AE2D-96FC3179C18B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B554742D-BC89-438E-AE2D-96FC3179C18B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B554742D-BC89-438E-AE2D-96FC3179C18B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{93A6D471-325A-4623-BCA7-7F1905CB50FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{93A6D471-325A-4623-BCA7-7F1905CB50FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{93A6D471-325A-4623-BCA7-7F1905CB50FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{93A6D471-325A-4623-BCA7-7F1905CB50FC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {4C4A585A-7478-4742-8505-7603A4B50AF0}
+		SolutionGuid = {85B642A9-76E1-4B35-95AA-B2F7F0BD201C}
 	EndGlobalSection
 EndGlobal

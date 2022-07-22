@@ -7,6 +7,7 @@ namespace PRNAssG8.Models
 {
     public partial class Reservation
     {
+        public int ReservationId { get; set; }
         public int? UserId { get; set; }
         public int? ProductId { get; set; }
         public DateTime? Time { get; set; }
