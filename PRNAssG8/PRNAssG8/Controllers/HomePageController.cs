@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Linq;
 using PRNAssG8.Models;
+using Microsoft.AspNetCore.Http;
 
 namespace PRNAssG8.Controllers
 {
@@ -15,6 +16,8 @@ namespace PRNAssG8.Controllers
         [Route("~/")]
         public IActionResult Index()
         {
+            ViewBag.Username = HttpContext.Session.GetString("username");
+            ViewBag.Userid = HttpContext.Session.GetInt32("userid");
             var product = db.Products.ToList();
             product = (from p in db.Products
                        where p.Status == 1
@@ -25,17 +28,17 @@ namespace PRNAssG8.Controllers
         [HttpPost]
         public IActionResult Index(string name)
         {
-            var product = db.Products.ToList();
+            var productSe = db.Products.ToList();
             if (name != null)
             {
 
-                product = (from p in db.Products
+                productSe = (from p in db.Products
                              where p.ProductName.Contains(name)
                              select p).ToList();
             }
 
 
-            return View(product);
+            return View(productSe);
         }
     }
 }
