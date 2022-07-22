@@ -6,11 +6,11 @@ namespace PRNAssG8.Controllers
 {
     public class AdminController : Controller
     {
-        PRN1Context db = new PRN1Context();
+        PRN2Context db = new PRN2Context();
 
         public IActionResult Manager()
         {
-            int id = 3;
+            int id = 2;
             //lay ra nhung product co cateid = cateid da chon
             var product = db.Products.ToList();
             if (id != 0)

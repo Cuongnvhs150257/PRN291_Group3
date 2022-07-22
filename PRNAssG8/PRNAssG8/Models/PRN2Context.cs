@@ -1,36 +1,35 @@
 ﻿using System;
-using System.IO;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.Extensions.Configuration;
 
 #nullable disable
 
 namespace PRNAssG8.Models
 {
-    public partial class PRN1Context : DbContext
+    public partial class PRN2Context : DbContext
     {
-        public PRN1Context()
+        public PRN2Context()
         {
         }
 
-        public PRN1Context(DbContextOptions<PRN1Context> options)
+        public PRN2Context(DbContextOptions<PRN2Context> options)
             : base(options)
         {
         }
 
         public virtual DbSet<Category> Categories { get; set; }
         public virtual DbSet<Product> Products { get; set; }
+        public virtual DbSet<Reservation> Reservations { get; set; }
         public virtual DbSet<Role> Roles { get; set; }
         public virtual DbSet<User> Users { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            var builder = new ConfigurationBuilder()
-                              .SetBasePath(Directory.GetCurrentDirectory())
-                              .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true);
-            IConfigurationRoot configuration = builder.Build();
-            optionsBuilder.UseSqlServer(configuration.GetConnectionString("PRN1"));
+            if (!optionsBuilder.IsConfigured)
+            {
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
+                optionsBuilder.UseSqlServer("server =TVG-LAPTOP\\TVG; database = PRN2;uid=sa;pwd=123;");
+            }
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -67,6 +66,11 @@ namespace PRNAssG8.Models
                     .IsRequired()
                     .HasMaxLength(255);
 
+                entity.Property(e => e.PriceNew)
+                    .HasMaxLength(10)
+                    .HasColumnName("Price_New")
+                    .IsFixedLength(true);
+
                 entity.Property(e => e.ProductName)
                     .IsRequired()
                     .HasMaxLength(255)
@@ -79,12 +83,31 @@ namespace PRNAssG8.Models
                     .HasForeignKey(d => d.CategoryId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK__Product__Categor__36B12243");
+            });
+
+            modelBuilder.Entity<Reservation>(entity =>
+            {
+                entity.HasNoKey();
+
+                entity.ToTable("Reservation");
+
+                entity.Property(e => e.NewPrice).HasColumnName("New_Price");
+
+                entity.Property(e => e.ProductId).HasColumnName("Product_ID");
+
+                entity.Property(e => e.Time).HasColumnType("date");
+
+                entity.Property(e => e.UserId).HasColumnName("User_ID");
+
+                entity.HasOne(d => d.Product)
+                    .WithMany()
+                    .HasForeignKey(d => d.ProductId)
+                    .HasConstraintName("FK__Reservati__Produ__3C69FB99");
 
                 entity.HasOne(d => d.User)
-                    .WithMany(p => p.Products)
+                    .WithMany()
                     .HasForeignKey(d => d.UserId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Product__User_ID__2A4B4B5E");
+                    .HasConstraintName("FK__Reservati__User___3D5E1FD2");
             });
 
             modelBuilder.Entity<Role>(entity =>
@@ -138,7 +161,7 @@ namespace PRNAssG8.Models
                     .WithMany(p => p.Users)
                     .HasForeignKey(d => d.RoleId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__User__Role_ID__2B3F6F97");
+                    .HasConstraintName("FK__User__Role_ID__3E52440B");
             });
 
             OnModelCreatingPartial(modelBuilder);

@@ -6,7 +6,7 @@ namespace PRNAssG8.Controllers
 {
     public class SearchController : Controller
     {
-        PRN1Context db = new PRN1Context();
+        PRN2Context db = new PRN2Context();
         public IActionResult Tim()
         {
             var product = db.Products.ToList();
@@ -17,16 +17,16 @@ namespace PRNAssG8.Controllers
         }
 
         [HttpPost]
-        public IActionResult Tim(Product product)
+        public IActionResult Tim(string name)
         {
-            string Pro = product.ProductName.ToString();
+    
             var productSe = db.Products.ToList();
-            if (product.ProductName.ToString() != null)
+            if (name != null)
             {
-                
+
                 productSe = (from p in db.Products
-                           where p.ProductName == Pro
-                           select p).ToList();
+                             where p.ProductName.Contains(name)
+                             select p).ToList();
             }
              
 

@@ -8,8 +8,8 @@ namespace PRNAssG8.Controllers
     [Route("auction")]
     public class AuctionController : Controller
     {
-        PRN1Context db = new PRN1Context();
-        
+        PRN2Context db = new PRN2Context();
+
         public IActionResult Index(int id)
         {
             ViewBag.Products = db.Products.ToList();

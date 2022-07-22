@@ -6,7 +6,7 @@ namespace PRNAssG8.Controllers
 {
     public class ProductController : Controller
     {
-        PRN1Context db = new PRN1Context();
+        PRN2Context db = new PRN2Context();
         public IActionResult Insert()
         {
             ViewBag.cate = db.Categories.ToList();

@@ -9,7 +9,7 @@ namespace PRNAssG8.Controllers
     public class HomePageController : Controller
     {
 
-        PRN1Context db = new PRN1Context();
+        PRN2Context db = new PRN2Context();
         [Route("index")]
         [Route("")]
         [Route("~/")]
@@ -23,15 +23,14 @@ namespace PRNAssG8.Controllers
         }
 
         [HttpPost]
-        public IActionResult Index(Product productSe)
+        public IActionResult Index(string name)
         {
-            string Pro = productSe.ProductName.ToString();
             var product = db.Products.ToList();
-            if (productSe.ProductName.ToString() != null)
+            if (name != null)
             {
 
                 product = (from p in db.Products
-                             where p.ProductName == Pro
+                             where p.ProductName.Contains(name)
                              select p).ToList();
             }
 

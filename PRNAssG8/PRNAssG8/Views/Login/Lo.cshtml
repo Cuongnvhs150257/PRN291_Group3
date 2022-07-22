@@ -1,0 +1,71 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    .col-md-6 form-group p_star{
+        margin: 0 auto;
+    }
+</style>
+
+<!--================Home Banner Area =================-->
+    <section class="banner_area">
+      <div class="banner_inner d-flex align-items-center">
+        <div class="container">
+          <div
+            class="banner_content d-md-flex justify-content-between align-items-center"
+          >
+            <div class="mb-3 mb-md-0">
+              <h2>Login</h2>
+              <p>You must login your account to Auction</p>
+            </div>
+            <div class="page_link">
+              <a href="index.html">Home</a>
+              <a href="checkout.html">Login</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!--================End Home Banner Area =================-->
+
+    <div class="returning_customer">
+          
+         
+          <form asp-controller="Login" asp-action="Lo" method="post"> 
+            
+          
+            <div class="col-md-6 form-group p_star">
+              <input
+                type="text"
+                class="form-control"
+                
+                name="name"
+                value=" "
+              />
+              <span
+                class="placeholder"
+                data-placeholder="Username"
+              ></span>
+            </div>
+            <div class="col-md-6 form-group p_star">
+              <input
+                type="password"
+                class="form-control"
+                name="password"
+                value=""
+              />
+              <span class="placeholder" data-placeholder="Password"></span>
+            </div>
+            <div class="col-md-12 form-group">
+              <button type="submit" value="submit" class="btn submit_btn">
+                Login
+              </button>
+             
+            </div>
+          </form>
+        </div>
