@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using PRNAssG8.Models;
+using System;
 using System.Linq;
 
 namespace PRNAssG8.Controllers
@@ -24,15 +25,31 @@ namespace PRNAssG8.Controllers
         }
         public IActionResult Detail(int id)
         {
+            ViewBag.re =(from r in db.Reservations
+                         where r.ProductId==id
+                         orderby r.NewPrice descending
+                         
+                         select  r).Take(15).ToList();
+            ViewBag.res = db.Reservations.ToList();
+            ViewBag.user = db.Users.ToList();
             ViewBag.cate = db.Categories.ToList();
             ViewBag.product = db.Products.Find(id);
             return View();
         }
         [HttpPost]
-        public IActionResult Detail( Product product)
-        {
-            db.Products.Update(product);
-            db.SaveChanges(true);
+        public IActionResult Detail( Reservation reservation,int check)
+        {       
+                Product product = db.Products.Find(reservation.ProductId);
+                product.Price = (double)reservation.NewPrice;
+                db.Products.Update(product);
+
+                if(check==1)
+                    db.Reservations.Update(reservation);
+                else
+                    db.Reservations.Add(reservation);
+     
+                db.SaveChanges(true);
+            
             return RedirectToAction("Detail");
         }
     }

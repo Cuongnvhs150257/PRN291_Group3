@@ -7,6 +7,11 @@ namespace PRNAssG8.Models
 {
     public partial class User
     {
+        public User()
+        {
+            Reservations = new HashSet<Reservation>();
+        }
+
         public int UserId { get; set; }
         public string FullName { get; set; }
         public string Phone { get; set; }
@@ -20,5 +25,6 @@ namespace PRNAssG8.Models
         public int Status { get; set; }
 
         public virtual Role Role { get; set; }
+        public virtual ICollection<Reservation> Reservations { get; set; }
     }
 }

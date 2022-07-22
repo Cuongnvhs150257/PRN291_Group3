@@ -15,10 +15,13 @@ namespace PRNAssG8.Controllers
         [Route("~/")]
         public IActionResult Index()
         {
+            
             var product = db.Products.ToList();
             product = (from p in db.Products
                        where p.Status == 1
                        select p).ToList();
+            if(product == null)
+                return View();
             return View(product);
         }
 

@@ -1,6 +1,8 @@
 ﻿using System;
+using System.IO;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.Extensions.Configuration;
 
 #nullable disable
 
@@ -25,11 +27,11 @@ namespace PRNAssG8.Models
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            if (!optionsBuilder.IsConfigured)
-            {
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-                optionsBuilder.UseSqlServer("server =TVG-LAPTOP\\TVG; database = PRN2;uid=sa;pwd=123;");
-            }
+            var builder = new ConfigurationBuilder()
+                              .SetBasePath(Directory.GetCurrentDirectory())
+                              .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true);
+            IConfigurationRoot configuration = builder.Build();
+            optionsBuilder.UseSqlServer(configuration.GetConnectionString("PRN2"));
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -87,27 +89,29 @@ namespace PRNAssG8.Models
 
             modelBuilder.Entity<Reservation>(entity =>
             {
-                entity.HasNoKey();
-
                 entity.ToTable("Reservation");
+
+                entity.Property(e => e.ReservationId)
+                    .ValueGeneratedNever()
+                    .HasColumnName("Reservation_id");
 
                 entity.Property(e => e.NewPrice).HasColumnName("New_Price");
 
                 entity.Property(e => e.ProductId).HasColumnName("Product_ID");
 
-                entity.Property(e => e.Time).HasColumnType("date");
+                entity.Property(e => e.Time).HasColumnType("datetime");
 
                 entity.Property(e => e.UserId).HasColumnName("User_ID");
 
                 entity.HasOne(d => d.Product)
-                    .WithMany()
+                    .WithMany(p => p.Reservations)
                     .HasForeignKey(d => d.ProductId)
-                    .HasConstraintName("FK__Reservati__Produ__3C69FB99");
+                    .HasConstraintName("FK__Reservati__Produ__2D27B809");
 
                 entity.HasOne(d => d.User)
-                    .WithMany()
+                    .WithMany(p => p.Reservations)
                     .HasForeignKey(d => d.UserId)
-                    .HasConstraintName("FK__Reservati__User___3D5E1FD2");
+                    .HasConstraintName("FK__Reservati__User___2E1BDC42");
             });
 
             modelBuilder.Entity<Role>(entity =>
@@ -161,7 +165,7 @@ namespace PRNAssG8.Models
                     .WithMany(p => p.Users)
                     .HasForeignKey(d => d.RoleId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__User__Role_ID__3E52440B");
+                    .HasConstraintName("FK__User__Role_ID__2F10007B");
             });
 
             OnModelCreatingPartial(modelBuilder);

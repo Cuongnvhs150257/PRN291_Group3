@@ -7,6 +7,11 @@ namespace PRNAssG8.Models
 {
     public partial class Product
     {
+        public Product()
+        {
+            Reservations = new HashSet<Reservation>();
+        }
+
         public int ProductId { get; set; }
         public string ProductName { get; set; }
         public string PriceNew { get; set; }
@@ -19,5 +24,6 @@ namespace PRNAssG8.Models
         public int CategoryId { get; set; }
 
         public virtual Category Category { get; set; }
+        public virtual ICollection<Reservation> Reservations { get; set; }
     }
 }
